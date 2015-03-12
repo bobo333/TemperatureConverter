@@ -48,6 +48,26 @@ class KnownValues(unittest.TestCase):
     self.assertEqual(result, 32)
 
   # sanity checks
+  def testCToKtoC(self):
+    """Celsius to Kelvin to Celsius yields initial Celsius value"""
+    original_celsius_value = 20
+    kelvin_value = temp_converter.cToK(original_celsius_value)
+    new_celsius_value = temp_converter.kToC(kelvin_value)
+    self.assertEqual(original_celsius_value, new_celsius_value)
+
+  def testCToFToC(self):
+    """Celsius to Fahrenheit to Celsius yields initial Celsius value"""
+    original_celsius_value = 20
+    fahrenheit_value = temp_converter.cToF(original_celsius_value)
+    new_celsius_value = temp_converter.fToC(fahrenheit_value)
+    self.assertEqual(original_celsius_value, new_celsius_value)
+
+  def testKToFToK(self):
+    """Kelvin to Fahrenheit to Kelvin yields initial Kelvin value"""
+    original_kelvin_value = 20
+    fahrenheit_value = temp_converter.kToF(original_kelvin_value)
+    new_kelvin_value = temp_converter.fToK(fahrenheit_value)
+    self.assertEqual(original_kelvin_value, new_kelvin_value)
 
   # test range exceptions
   def testCtoFRange(self):
