@@ -1,8 +1,8 @@
 # TemperatureConverter Tests
 
 import unittest
-from lib.TemperatureConverter import TemperatureConverter
-from lib.TemperatureErrors import TemperatureRangeError
+from TemperatureConverter import TemperatureConverter
+from TemperatureErrors import *
 
 class KnownValues(unittest.TestCase):
   knownValues = (
@@ -71,28 +71,28 @@ class KnownValues(unittest.TestCase):
 
   # test range exceptions
   def testCtoFRange(self):
-    """cToF should raise TemperatureRangeError if Celsius is less than -273.15"""
-    self.assertRaises(TemperatureRangeError, self.temp_converter.cToF, -274)
+    """cToF should raise CelsiusRangeError if Celsius is less than -273.15"""
+    self.assertRaises(CelsiusRangeError, self.temp_converter.cToF, -274)
 
   def testCtoKRange(self):
-    """cToK should raise TemperatureRangeError if Celsius is less than -273.15"""
-    self.assertRaises(TemperatureRangeError, self.temp_converter.cToK, -274)
+    """cToK should raise CelsiusRangeError if Celsius is less than -273.15"""
+    self.assertRaises(CelsiusRangeError, self.temp_converter.cToK, -274)
 
   def testFtoCRange(self):
-    """fToC should raise TemperatureRangeError if Fahrenheit is less than -459.67"""
-    self.assertRaises(TemperatureRangeError, self.temp_converter.fToC, -460)
+    """fToC should raise FahrenheitRangeError if Fahrenheit is less than -459.67"""
+    self.assertRaises(FahrenheitRangeError, self.temp_converter.fToC, -460)
 
   def testFtoKRange(self):
-    """fToK should raise TemperatureRangeError if Fahrenheit is less than -459.67"""
-    self.assertRaises(TemperatureRangeError, self.temp_converter.fToK, -460)
+    """fToK should raise FahrenheitRangeError if Fahrenheit is less than -459.67"""
+    self.assertRaises(FahrenheitRangeError, self.temp_converter.fToK, -460)
 
   def testKtoCRange(self):
-    """kToC should raise TemperatureRangeError if Kelvin is less than 0"""
-    self.assertRaises(TemperatureRangeError, self.temp_converter.kToC, -1)
+    """kToC should raise KelvinRangeError if Kelvin is less than 0"""
+    self.assertRaises(KelvinRangeError, self.temp_converter.kToC, -1)
 
   def testKtoFRange(self):
-    """kToF should raise TemperatureRangeError if Kelvin is less than 0"""
-    self.assertRaises(TemperatureRangeError, self.temp_converter.kToF, -1)
+    """kToF should raise KelvinRangeError if Kelvin is less than 0"""
+    self.assertRaises(KelvinRangeError, self.temp_converter.kToF, -1)
 
-if __name__ == "__main__":
+if __name__ == '__main__':
   unittest.main()

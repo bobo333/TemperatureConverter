@@ -1,4 +1,5 @@
-from lib.TemperatureConverter import TemperatureConverter
+from TemperatureConverter.TemperatureConverter import TemperatureConverter
 
 x = TemperatureConverter()
-print x.kToF(-25)
+
+print x.fToK(-25)

@@ -1,11 +1,11 @@
-from TemperatureErrors import TemperatureRangeError
+from TemperatureErrors import *
 
 class TemperatureConverter:
   def __init__(self, precision=2):
     self.zero_celsius_in_kelvin = 273.15
     self.abs_zero_celsius = -self.zero_celsius_in_kelvin
     self.abs_zero_fahrenheit = -459.67
-    self.precision = precision
+    self.abs_zero_kelvin = 0
 
   def cToF(self, celsius_value):
     """Convert Celsius to Fahrenheit"""
@@ -40,11 +40,13 @@ class TemperatureConverter:
     return self.cToF(celsius_value)
 
   def __checkCelsiusRange(self, celsius_value):
-    """Raise TemperatureRangeError if celsius_value is below absolute zero"""
-    if (celsius_value < self.abs_zero_celsius): raise TemperatureRangeError(celsius_value)
+    """Raise CelsiusRangeError if celsius_value is below absolute zero"""
+    if (celsius_value < self.abs_zero_celsius): raise CelsiusRangeError(celsius_value)
 
   def __checkFahrenheitRange(self, fahrenheit_value):
-    if (fahrenheit_value < self.abs_zero_fahrenheit): raise TemperatureRangeError(fahrenheit_value)
+    """Raise FahrenheitRangeError if fahrenheit_value is below absolute zero"""
+    if (fahrenheit_value < self.abs_zero_fahrenheit): raise FahrenheitRangeError(fahrenheit_value)
 
   def __checkKelvinRange(self, kelvin_value):
-    if (kelvin_value < 0): raise TemperatureRangeError(kelvin_value)
+    """Raise KelvinRangeError if kelvin_value is below absolute zero"""
+    if (kelvin_value < self.abs_zero_kelvin): raise KelvinRangeError(kelvin_value)
