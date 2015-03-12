@@ -12,43 +12,69 @@ class KnownValues(unittest.TestCase):
     (100, 212)
   )
 
-  def testCToF(self):
+  # test value conversions
+  def testCtoF(self):
     """cToF should return the known Fahrenheit value for the
        provided Celsius value."""
     for c_val, f_val in self.knownValues:
       result = temp_converter.cToF(c_val)
       self.assertEqual(result, f_val)
 
-  def testCToK(self):
+  def testCtoK(self):
     """cToK should return 273.15 Kelvin for 0 Celsius"""
     result = temp_converter.cToK(0)
     self.assertEqual(result, 273.15)
 
-  def testFToC(self):
+  def testFtoC(self):
     """fToC should return the known Celsius value for the 
        provided Fahrenheit value."""
     for c_val, f_val in self.knownValues:
       result = temp_converter.fToC(f_val)
       self.assertEqual(result, c_val)
 
-  def testFToK(self):
+  def testFtoK(self):
     """fToK should return 273.15 Kelvin for 32 Fahrenheit"""
     result = temp_converter.fToK(32)
     self.assertEqual(result, 273.15)
 
-  def testKToC(self):
+  def testKtoC(self):
     """kToC should return 0 Celsius for 273.15 Kelvin"""
     result = temp_converter.kToC(273.15)
     self.assertEqual(result, 0)
 
-  def testKToF(self):
-    """kToF should return 32 Fahrenheith for 273.15 Kelvin"""
+  def testKtoF(self):
+    """kToF should return 32 Fahrenheit for 273.15 Kelvin"""
     result = temp_converter.kToF(273.15)
     self.assertEqual(result, 32)
+
+  # sanity checks
+
+  # test range exceptions
+  def testCtoFRange(self):
+    """cToF should raise TemperatureRangeError if Celsius is less than -273.15"""
+    self.assertRaises(TemperatureRangeError, temp_converter.cToF, -274)
+
+  def testCtoKRange(self):
+    """cToK should raise TemperatureRangeError if Celsius is less than -273.15"""
+    self.assertRaises(TemperatureRangeError, temp_converter.cToK, -274)
+
+  def testFtoCRange(self):
+    """fToC should raise TemperatureRangeError if Fahrenheit is less than -459.67"""
+    self.assertRaises(TemperatureRangeError, temp_converter.fToC, -460)
+
+  def testFtoKRange(self):
+    """fToK should raise TemperatureRangeError if Fahrenheit is less than -459.67"""
+    self.assertRaises(TemperatureRangeError, temp_converter.fToK, -460)
+
+  def testKtoCRange(self):
+    """kToC should raise TemperatureRangeError if Kelvin is less than 0"""
+    self.assertRaises(TemperatureRangeError, temp_converter.kToC, -1)
 
   def testKtoFRange(self):
     """kToF should raise TemperatureRangeError if Kelvin is less than 0"""
     self.assertRaises(TemperatureRangeError, temp_converter.kToF, -1)
+
+
 
 
 
