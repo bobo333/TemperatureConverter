@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='TemperatureConverter',
-    version='0.1.0',
+    version='0.1.1',
     author='Steven Cipriano',
     author_email='cipriano.steven@gmail.com',
     packages=['temperatureconverter'],
